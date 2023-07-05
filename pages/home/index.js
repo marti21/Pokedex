@@ -1,4 +1,3 @@
-import Grid from "@/components/Grid";
 import PokemonImg from "@/components/PokemonImg";
 import { userLogout } from "@/firebase/client";
 import useUser from "@/hooks/useUser";
@@ -81,8 +80,7 @@ export default function HomePage() {
       <div className="content-section">
           {data.map((results) => (
             <div className="pokemonCard" key={results.name} >
-              <Grid name={results.name}></Grid>
-              <PokemonImg url={results.url}></PokemonImg>
+              <PokemonImg url={results.url} name={results.name}></PokemonImg>
             </div>
           ))}
       </div>
