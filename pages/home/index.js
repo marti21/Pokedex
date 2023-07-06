@@ -35,7 +35,6 @@ export default function HomePage() {
     const hendleNextImgs = () =>{
       if(offset != 1500){
         const newOffset = parseInt(offset, 10) + parseInt(limit, 10);
-        console.log(newOffset)
         setOffset(newOffset)
       }
     }
@@ -46,37 +45,49 @@ export default function HomePage() {
         if(newOffset < 0){
           newOffset = 0
         }
-        console.log(newOffset)
         setOffset(newOffset)
       }
     }
 
     const handleButtonChangeLimit = (event) => {
-      const newLlimit = event.target.value;
+      let newLlimit = event.target.value;
+      if(newLlimit === ""){
+        newLlimit = "10"
+      }
       setLimit(newLlimit)
     }
 
   return (
     <>
-    <main>
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
+    <header>
       <nav>
         <ul>
-          <li><Link href={'/home'}>INICIO</Link></li>  
-          <li><Link href={'/perfil'}>{user && user.username}</Link></li>  
-          <li><Link href={'/favoritos'}>FAVOITOS</Link></li>
+          <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/home'}>INICIO</Link></li>  
+          <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/perfil'}>{user && user.username}</Link></li>  
+          <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/favoritos'}>FAVORITOS</Link></li>
           <li onClick={logoutUser}><a>LOGOUT</a></li>
         </ul>  
       </nav>
+    </header>
+
+    <main>
 
       <div className="clear"></div>
 
-      <div className="inputDiv"><h5>Limit: </h5><input onChange={handleButtonChangeLimit}></input></div>
-
-      <div className="pageButtons">
-        {offset > 0 && <div className="buttons"><LastButton onClick={hendleBackImgs} /></div>}
-        <div className="buttons"><NextButton onClick={hendleNextImgs} /></div>        
+      <div className="divTitleImg">
+        <img className="titleImg" src="https://1.bp.blogspot.com/-0V4itR_v87M/UtsCF-ehNYI/AAAAAAAABjU/UEQ5Jiy_85o/s1600/pokedex-3d-logo.png"></img>
       </div>
-      
+
+      <div className="inputsContent">
+        <div className="inputDiv"><h5>Limit: </h5><input onChange={handleButtonChangeLimit}></input></div>
+
+        <div className="pageButtons">
+          {offset > 0 && <div className="buttons"><LastButton onClick={hendleBackImgs} /></div>}
+          <div className="buttons"><NextButton onClick={hendleNextImgs} /></div>        
+        </div>
+      </div>
+        
       <div className="content-section">
           {data.map((results) => (
             <div className="pokemonCard" key={results.name} >
@@ -88,10 +99,17 @@ export default function HomePage() {
     
       <style jsx>{`
         main {
-
+        }
+        .titleImg {
+          width: 650px;
+          height: auto;
+        }
+        .divTitleImg {
+          display: flex;
+          margin: 150px 0 0px 0;
+          justify-content: center;
         }
         .clear {
-          background: green;
           height: 1px;
         }
         .content-section {
@@ -121,9 +139,9 @@ export default function HomePage() {
         }
         .inputDiv {
           display: flex;
-          justify-content: center;
-          margin-top: 150px;
+          justify-content: flex-start;
           align-items: center;
+          margin-right: 100px;
         }
         .inputDiv input {
           width: 50px;
@@ -131,6 +149,11 @@ export default function HomePage() {
         .inputDiv h5 {
           padding-right: 10px;
         }
+        .inputsContent {
+          display: flex;
+          justify-content: center;
+        }
+
         `}
       </style>
     </>

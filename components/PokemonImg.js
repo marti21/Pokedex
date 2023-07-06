@@ -13,19 +13,15 @@ export default function PokemonImg({ url, name }) {
             try{
                 const response = await fetch(url)
                 const jsonData = await response.json();
-                console.log(jsonData)
                 const imgUrl = jsonData.sprites.other["official-artwork"].front_default;
                 setUrlOfficialImg(imgUrl)
-                console.log(listColors.grass)
 
                 const type1 = jsonData.types[0].type.name;
-                console.log(type1)
                 setColor1(listColors[`${type1}`])
 
                 if(jsonData.types.length > 1){
                     const type2 = jsonData.types[1].type.name;
                     setColor2(listColors[`${type2}`])
-                    console.log(type2)
                 }
                 else {
                     setColor2(listColors[`${type1}`])
@@ -40,6 +36,7 @@ export default function PokemonImg({ url, name }) {
     
     return (
         <>
+            <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
             <div className="container">
                 <div className="divContainer">
                     <div className="imgDiv">
@@ -92,6 +89,10 @@ export default function PokemonImg({ url, name }) {
                 }
                 .divContainer {
                     display: block;
+                }
+
+                .linkDiv h2 {
+                    font-family: 'Belanosima', serif;
                 }
 
                 `}

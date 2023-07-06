@@ -60,25 +60,25 @@ export default function Home()  {
 
     return (
     <>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Caprasimo"></link>
-        <div className="container">
-            <div className="divTitle">
-                <h1>PAGINA PRINCIPAL</h1> 
-            </div>
-            <div className="imgDiv">
-                <img src={img} alt="imagen" />
-            </div>
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
 
-            <div className="divPokeballImg">
-                <img className="pokeballImg" src="https://www.freeiconspng.com/thumbs/pokeball-png/pokeball-transparent-png-2.png"></img>
-            </div>
-    
-            <div className="footerDiv">
-                <Button onClick={handleButtonGoogleLogin} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png" />
-                <Button onClick={handleButtonGitHubLogin} src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />
-            </div>
+    <div className="container">
+        <div className="divTitle">
+            <h1>PAGINA PRINCIPAL</h1> 
         </div>
+        <div className="imgDiv">
+            <img src={img} alt="imagen" />
+        </div>
+
+        <div className="divPokeballImg">
+            <img className="pokeballImg" src="https://www.freeiconspng.com/thumbs/pokeball-png/pokeball-transparent-png-2.png"></img>
+        </div>
+
+        <div className="footerDiv">
+            <Button onClick={handleButtonGoogleLogin} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png" />
+            <Button onClick={handleButtonGitHubLogin} src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />
+        </div>
+    </div>
 
     <style jsx>{`
         .container {
@@ -137,7 +137,7 @@ export default function Home()  {
             height: 320px;
         }
         h1{
-            font-family: 'Caprasimo', serif;
+            font-family: 'Belanosima', serif;
         }
 
         @keyframes desplazamientoPokeball {

@@ -15,15 +15,18 @@ export default function Pokemon (props) {
 
     return (
     <>
+    <header>
+      <nav>
+        <ul>
+          <li><Link href={'/home'}>INICIO</Link></li>  
+          <li><Link href={'/perfil'}>{user && user.username}</Link></li>  
+          <li><Link href={'/favoritos'}>FAVORITOS</Link></li>
+          <li onClick={logoutUser}><a>LOGOUT</a></li>
+        </ul>  
+      </nav>
+    </header>
     <main>
-        <nav>
-            <ul>
-                <li><Link href={'/home'}>INICIO</Link></li>  
-                <li><Link href={'/perfil'}>{user && user.username}</Link></li>  
-                <li><Link href={'/favoritos'}>FAVOITOS</Link></li>
-                <li onClick={logoutUser}><a>LOGOUT</a></li>
-            </ul>  
-        </nav>
+
         <div className="gridStats">
             <img src={props.sprites.other['official-artwork'].front_default}></img>
             <Stats props={props}></Stats>
