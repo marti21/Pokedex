@@ -37,7 +37,7 @@ export default function PokemonImg({ url, name }) {
     return (
         <>
             <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
-            <div className="container">
+            {urlOfficialImg &&<div className="container">
                 <div className="divContainer">
                     <div className="imgDiv">
                         <img className="officialImg" src={urlOfficialImg}></img>
@@ -46,7 +46,7 @@ export default function PokemonImg({ url, name }) {
                         <Link href={`/pokemon/${name}`} style={{ textDecoration: 'none', color: 'black', }}><h2>{name}</h2></Link>
                     </div>
                 </div>
-            </div>
+            </div>}
 
             <style jsx>{`
                 .officialImg {
@@ -71,11 +71,15 @@ export default function PokemonImg({ url, name }) {
                     padding: 30px;
                     justify-content: center;
                     min-width: 200px;
+                    
+                    /*Para que se ponga debajo del nav que tiene un valor mas alto*/
+                    z-index: 1;
                 }      
                 .container:hover{
                     /*background: white;*/
                     cursor:pointer;
                     box-shadow: 15px 10px 1em grey;
+                    transform: scale(1.05);
                 }
                 .linkDiv{
                     height: fit-content;

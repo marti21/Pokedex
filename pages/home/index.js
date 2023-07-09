@@ -5,11 +5,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import LastButton from "@/components/LastButton";
 import NextButton from "@/components/NextButton";
+import { listPokemons } from "@/hooks/pokemonList";
+import SelectComponent from "@/components/SelectComponent";
 
 export default function HomePage() {
   const [data, setData] = useState([]);
   const [limit, setLimit] = useState(10)
   const [offset, setOffset] = useState(0)
+  const [pokemonSelected, setPokemonSelected] = useState()
+  const [timestamp, setTimestamp] = useState()
   const user = useUser()
 
     useEffect(() => {
@@ -26,7 +30,29 @@ export default function HomePage() {
         if(user){
           fetchData();
         }
-    }, [user,offset,limit])
+    }, [user,offset,limit,timestamp])
+
+    useEffect(() => {
+      if(user && pokemonSelected){
+        console.log(pokemonSelected.value)
+        const newPokemonSelected = pokemonSelected.value.toString().toLowerCase()
+
+        try {
+          const url = 'https://pokeapi.co/api/v2/pokemon/' + newPokemonSelected + '/';
+          const newData = {
+            name: newPokemonSelected,
+            url: url
+          }
+          const listaArrays = [
+            newData
+          ];
+          setData(listaArrays)
+        }
+        catch(error) {
+          console.log(error)
+        }
+      }
+    }, [pokemonSelected])
     
     const logoutUser = () => {
       userLogout()
@@ -80,6 +106,9 @@ export default function HomePage() {
       </div>
 
       <div className="inputsContent">
+        
+        <div className="selectContainer"><SelectComponent setPokemonSelected={setPokemonSelected} setTimestamp={setTimestamp}></SelectComponent></div>
+
         <div className="inputDiv"><h5>Limit: </h5><input onChange={handleButtonChangeLimit}></input></div>
 
         <div className="pageButtons">
@@ -152,6 +181,15 @@ export default function HomePage() {
         .inputsContent {
           display: flex;
           justify-content: center;
+        }
+        .listPokemon {
+          width: 100%;
+          background: red;
+        }
+        .selectContainer {
+          display: flex;
+          align-items: center;
+          margin-right: 50px;
         }
 
         `}
