@@ -1,71 +1,56 @@
 export default function Stats({props}) {
     return(
     <>
-        <div className="grid">
-            <div className="one"><h3>BASE STATS (LVL50)</h3></div>
-            <div className="two"><p>HP: {props.stats[0].base_stat}</p></div>
-            <div className="third"><p>ATTACK: {props.stats[1].base_stat}</p></div>
-            <div className="four"><p>DEFENSE: {props.stats[2].base_stat}</p></div>
-            <div className="five"><p>SPECIAL ATTACK: {props.stats[3].base_stat}</p></div>
-            <div className="six"><p>SPECIAL DEFENSE: {props.stats[4].base_stat}</p></div>
-            <div className="seven"><p>SPEED: {props.stats[5].base_stat}</p></div>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Belanosima"></link>
+        <div className="content">
+            <div className="title"><h3>BASE STATS (LVL50)</h3></div>
+            <div className="grid">
+                <div className="one"><p>HP: {props.stats[0].base_stat}</p></div>
+                <div className="one"><p>ATTACK: {props.stats[1].base_stat}</p></div>
+                <div className="one"><p>DEFENSE: {props.stats[2].base_stat}</p></div>
+                <div className="one"><p>SPECIAL ATTACK: {props.stats[3].base_stat}</p></div>
+                <div className="one"><p>SPECIAL DEFENSE: {props.stats[4].base_stat}</p></div>
+                <div className="one"><p>SPEED: {props.stats[5].base_stat}</p></div>
+            </div>
         </div>
+        
 
         <style jsx>
         {`
             .grid{
-                display: grid;
+                display: flex;
                 gap: 5px;
-                width: fit-content;
+                /*grid-template-columns: repeat(2, 3fr);*/
+                /*grid-template-columns: repeat(2, 10em);*/
                 font-size: 13px;
+                flex-direction: row;
+                width: 30em;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 8px 8px;
             }
             .one {
-                grid-column: 1;
-                grid-row: 1;
-                padding: 1em;
+                display: flex;
+                width: 14em;
+                border: 1px solid grey;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
             }
-            .two {
-                grid-column: 1 / 2;
-                grid-row: 2;
-                border: 1px solid;
-                border-radius: 10px;
-                text-align: center;
+            .content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Belanosima';
             }
-            .third {
-                grid-column: 2 / 2;
-                grid-row: 2;
-                border: 1px solid;
-                border-radius: 10px;
-                text-align: center;
-            }
-            .four{
-                grid-column: 1 / 2;
-                grid-row: 3;                
-                border: 1px solid;
-                border-radius: 10px;
-                text-align: center;
-            }
-            .five {
-                grid-column: 2 / 2;
-                grid-row: 3;                
-                border: 1px solid;
-                border-radius: 10px;
-                text-align: center;
-                padding: 0 1em 0 1em;
-            }
-            .six {
-                grid-column: 1 / 2;
-                grid-row: 4;                
-                border: 1px solid;
-                border-radius: 10px;
-                text-align: center;
-            }
-            .seven {
-                grid-column: 2 / 2;
-                grid-row: 4;                
-                border: 1px solid;
-                border-radius: 10px;
-                text-align: center;
+            .title {
+                display: flex;
+                border-radius: 4px;
+                justify-content: center;
+                width: 91%;
+                border: 1px solid grey;
+                font-size: 13px;
             }
         `}
         </style>

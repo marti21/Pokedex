@@ -1,5 +1,5 @@
 export const listPokemons = [
-    { value: 'NoPokemon', label: 'Selecciona un pokemon' },
+    { value: 'NoPokemon', label: 'Todos' },
     { value: 'bulbasaur', label: 'bulbasaur' },
     { value: 'ivysaur', label: 'ivysaur' },
     { value: 'venusaur', label: 'venusaur' },

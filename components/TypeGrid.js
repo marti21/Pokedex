@@ -11,6 +11,13 @@ export default function TypeGrid({props}) {
         {`
             .grid {
                 display: flex;
+                border: 1px solid grey;
+                border-radius: 5px;
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
             }
             .one {
                 padding-right: 40px;
