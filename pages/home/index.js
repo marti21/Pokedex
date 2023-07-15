@@ -15,8 +15,6 @@ export default function HomePage() {
   const [timestamp, setTimestamp] = useState()
   const user = useUser()
 
-  console.log(data)
-
     useEffect(() => {
         const fetchData = async () => {
           try {

@@ -28,7 +28,6 @@ li{
     margin-left: 50px;
     list-style-type: none !important;
     padding: 1px;
-    -webkit-transition:  padding .4s ease-out;
     cursor: pointer;
     padding: 8px;
 }

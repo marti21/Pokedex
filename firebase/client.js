@@ -21,6 +21,7 @@ const firebaseConfig = {
 const database = firebase.firestore()
 
 export const mapUserFromFirebaseAuth = (user) => {
+  console.log(user);
   const { displayName, email, photoURL, uid } = user
   return {
     avatar: photoURL,
@@ -54,9 +55,58 @@ export const loginWithGitHub = () => {
   const githubProvider = new firebase.auth.GithubAuthProvider()
   return firebase
     .auth()
-    .signInWithPopup(githubProvider)
+    .signInWithRedirect(githubProvider)
+}
+
+export const loginWithEmailAndPassword = (email, password) => {
+  return firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password).then((userCredential) => {
+      // Signed in 
+      var user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      return errorMessage;
+      // ..
+    });
 }
 
 export const userLogout = () => {
   return firebase.auth().signOut()
+}
+
+
+export const createUser = (email, password, setMessage) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    setMessage(errorMessage)
+  });
+}
+
+export const updateUser = () => {
+  const user = firebase.auth().currentUser;
+  console.log(user)
+  
+  // Actualiza el nombre del usuario
+  user.updateProfile({
+    displayName: 'MAX',
+  })
+    .then(() => {
+      // Actualización exitosa
+      console.log('Nombre de usuario actualizado');
+    })
+  .catch((error) => {
+      // Error al actualizar el nombre del usuario
+      console.error('Error al actualizar el nombre de usuario:', error);
+  });
+  
 }

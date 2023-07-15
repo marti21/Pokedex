@@ -1,20 +1,16 @@
-import Button from "@/components/Button"
-import { loginWithGitHub, loginWithGoogle } from "@/firebase/client"
-import useUser from "@/hooks/useUser"
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import Button from "@/components/Button";
+import { createUser, loginWithGitHub, loginWithGoogle } from "@/firebase/client";
+import useUser from "@/hooks/useUser";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-export default function Home()  {
+export default function HomePage(){
     const user = useUser()
     const router = useRouter()
-    const [urls, setUrls] = useState()
-    const [img, setImg] = useState()
+    const [message, setMessage] = useState()
+    const [showNotification, setShowNotification] = useState()
 
-    useEffect(() => {
-        user && router.replace('/home')
-    },[user])
-        
-    const handleButtonGoogleLogin = () => {
+    const handleGoogleButton = () => {
         loginWithGoogle()
     }
 
@@ -22,140 +18,104 @@ export default function Home()  {
         loginWithGitHub()
     }
 
-    const setImageFunction = async(results) => {
-        const randomNumber = Math.floor(Math.random() * results.length);
-        const pokemon = results[randomNumber];
-        const pokemonResponse = await fetch(pokemon.url);
-        const pokemonJson = await pokemonResponse.json();
-        setImg(pokemonJson.sprites.other['official-artwork'].front_default);
+    const hola = (event) => {
+        event.preventDefault();
+        const email = event.target[0].value;
+        const password = event.target[1].value;
+        console.log(email, password)
+        createUser(email, password, setMessage)
     }
 
     useEffect(() => {
-        const fetchAllImg = async() => {
-            try{
-                const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=&offset=0');
-                const json = await response.json()
-                if(json.results.length > 0){
-                    setUrls(json.results)
-                    setImageFunction(json.results)
-                }
-            }
-            catch (error){
-                console.log(error)
-            }
-        }
-        fetchAllImg()
-    },[])
+        console.log(message)
+    },[message])
 
     useEffect(() => {
-        const fetchRandomImg = async() => {
-            if(urls && urls.length > 0){
-                setImageFunction(urls)
-            }
-        }
+        user && router.replace('/home')
+    },[user])
 
-        const intervalId = setInterval(fetchRandomImg, 3500);
-        return () => clearInterval(intervalId);
-    },[urls])
-
-    return (
+    return(
     <>
-    <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
+        <div className="content">
+            <div className="loginContent">
+                <div className="titleLogin"><h1>INICIAR SESSION</h1></div>
+                <div className="imputsContainer">
+                {message && <span>{message}</span>} 
+                <form onSubmit={hola}>
+                    <input type="text" id="email" placeholder="Email" required></input>
+                    <input type="password" id="password" placeholder="Password" required></input>
+                    <button type="submit">Submit</button>
+                </form>
 
-    <div className="container">
-        <div className="divTitle">
-            <h1>PAGINA PRINCIPAL</h1> 
+                </div>
+                <div className="containOtherButtons">
+                    <h1>Iniciar session con:</h1>
+                    <div className="otherLoginButtons">
+                        <Button onClick={handleGoogleButton} src={'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png'}></Button>
+                        <Button onClick={handleButtonGitHubLogin} src={'https://cdn-icons-png.flaticon.com/512/25/25231.png'}></Button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="imgDiv">
-            <img src={img} alt="imagen" />
-        </div>
 
-        <div className="divPokeballImg">
-            <img className="pokeballImg" src="https://www.freeiconspng.com/thumbs/pokeball-png/pokeball-transparent-png-2.png"></img>
-        </div>
-
-        <div className="footerDiv">
-            <Button onClick={handleButtonGoogleLogin} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png" />
-            <Button onClick={handleButtonGitHubLogin} src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />
-        </div>
-    </div>
-
-    <style jsx>{`
-        .container {
-            margin: 0;
-            padding: 0;
-            border-radius: 30px;
-            margin: 3em 7em 3em 7em;
-            height: 50em;
-            position:relative;
-            box-shadow: 30px 30px 5em;
-            border: 2px solid;
-        }
-        .divTitle {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 50px;
-        }
-        .imgDiv {
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            padding-top: 4em;
-        }
-        .footerDiv {
-            display: flex;
-            padding: 10px 0;
-            margin-top: auto;
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            width: 100%;
-            padding-bottom: 4em;
-            justify-content: center;
-            margin-bottom: 2em;
-        }
-        .divPokeballImg {
-            margin-top: auto;
-            display: flex;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            width: 100%;
-            padding: 1em;
-        }
-        .pokeballImg{
-            width: auto;
-            height: 4em;
-            animation-name: desplazamientoPokeball;
-            animation-duration: 8s;
-            animation-iteration-count: infinite;
-        }
-        img {
-            width: auto;
-            height: 320px;
-        }
-        h1{
-            font-family: 'Belanosima', serif;
-        }
-
-        @keyframes desplazamientoPokeball {
-            0% {
-                transform: translate(0px) rotate(0deg);
+        <style jsx>{`
+            .content {
+                display: flex;
+                height: 100vh;
+                margin 0;
+                justify-content:center;
+                align-items:center;
             }
 
-            50% {
-                transform: translate(5em) rotate(360deg);
+            .loginContent {
+                border: 0.5px solid;
+                display: flex;
+                border-radius: 12px;
+                flex-direction: column;
+                flex-wrap: wrap;
+                width: 30em;
+                height: 40em;
             }
-
-            100% {
-                transform: translate(0px) rotate(0deg);
+            .titleLogin {
+                display: flex;
+                height: fit-content;
+                width: 100%;
+                justify-content: center;
+                align-items:center;
+                padding-top: 50px;
             }
-        }
-
-    `}</style>
-    </>
-    )
+            .imputsContainer {
+                display: flex;
+                justify-content: center;
+                align-items:center;
+                margin-top: 80px;
+                flex-direction: column;
+                gap: 50px;
+            }
+            input {
+                border-radius: 0.3px;
+            }
+            button {
+                width: fit-content;
+            }
+            .containOtherButtons{
+                display: flex;
+                align-items: center;
+                justify-conent: center;
+                flex-direction: column;
+                margin-top: 50px;
+            }
+            .otherLoginButtons {
+                display: flex;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 35px;
+                justify-content: center;
+                align-items:center;
+            }
+        `}
+        </style>
+    </>)
 }
-

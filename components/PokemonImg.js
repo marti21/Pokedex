@@ -79,6 +79,7 @@ export default function PokemonImg({ url, name }) {
                     /*background: white;*/
                     cursor:pointer;
                     box-shadow: 15px 10px 1em grey;
+                    -webkit-transition:  transform 0.2s ease-out;
                     transform: scale(1.05);
                 }
                 .linkDiv{

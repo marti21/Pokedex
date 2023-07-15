@@ -1,4 +1,4 @@
-export default function Button( {img, onClick, src} ){
+export default function Button( {onClick, src} ){
 
     return(<>
         <button onClick={onClick}>
