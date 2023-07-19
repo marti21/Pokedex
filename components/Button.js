@@ -1,4 +1,4 @@
-export default function Button( {onClick, src} ){
+export default function Button( {onClick, src, width, height} ){
 
     return(<>
         <button onClick={onClick}>
@@ -7,21 +7,22 @@ export default function Button( {onClick, src} ){
 
         <style jsx>{`
             button {
-                width: 50px;
-                height: 50px;
-                border-radius: 99px;
+                width: ${width}px;
+                height: ${height}px;
+                border-radius: 50px;
                 border: 0.5px dotted;
                 display: flex;
                 justify-content: center;
-                margin: 10px;    
-                align-items: center;     
+                align-items: center;
+                cursor: pointer;
             }
             img {
-                height: 23px;
+                height: 21px;
                 width: auto;
             }   
             button:hover {
-                opacity: 0.65;
+                opacity: 0.75;
+                background: red;
             }
         `}
         </style>

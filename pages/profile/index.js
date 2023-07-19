@@ -4,7 +4,6 @@ import useUser from "@/hooks/useUser"
 
 export default function Profile() {
     const user = useUser()
-    console.log(user)
 
     const handkeUp = () => {
         updateUser()

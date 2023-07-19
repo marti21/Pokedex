@@ -12,7 +12,6 @@ export default function PokemonProfile({props}) {
         {`
             img {
                 width: 20em;
-                border: 1px solid grey;
                 border-radius: 5px;
             }
             div {

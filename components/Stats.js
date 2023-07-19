@@ -28,10 +28,12 @@ export default function Stats({props}) {
                 flex-wrap: wrap;
                 justify-content: center;
                 padding: 8px 8px;
+                font-size: 16px;
             }
             .one {
                 display: flex;
-                width: 14em;
+                width: 13.9em;
+                height: 3em;
                 border: 1px solid grey;
                 align-items: center;
                 justify-content: center;
@@ -50,7 +52,7 @@ export default function Stats({props}) {
                 justify-content: center;
                 width: 91%;
                 border: 1px solid grey;
-                font-size: 13px;
+                font-size: 16px;
             }
         `}
         </style>

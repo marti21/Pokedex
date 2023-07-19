@@ -55,10 +55,10 @@ export const loginWithGitHub = () => {
   const githubProvider = new firebase.auth.GithubAuthProvider()
   return firebase
     .auth()
-    .signInWithRedirect(githubProvider)
+    .signInWithPopup(githubProvider)
 }
 
-export const loginWithEmailAndPassword = (email, password) => {
+export const loginWithEmailAndPassword = (email, password, setMessage) => {
   return firebase
     .auth()
     .signInWithEmailAndPassword(email, password).then((userCredential) => {
@@ -69,7 +69,7 @@ export const loginWithEmailAndPassword = (email, password) => {
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
-      return errorMessage;
+      setMessage(errorMessage);
       // ..
     });
 }
@@ -110,3 +110,15 @@ export const updateUser = () => {
   });
   
 }
+
+/*
+export const recoverUserPassword = (emailAdress) => {
+  return firebase.auth().sendPasswordResetEmail("mrtxaver@gmail.com").then().then(function() {
+    // Correo electrónico de restablecimiento de contraseña enviado.
+    console.log("Correo electrónico de restablecimiento de contraseña enviado.");
+  }).catch(function(error) {
+    // Ocurrió un error al enviar el correo electrónico.
+    console.log("Error al enviar el correo electrónico de restablecimiento de contraseña:", error);
+  });
+}
+*/

@@ -9,8 +9,6 @@ export default function Navigation() {
         userLogout()
     }       
 
-    console.log(user)
-
     return(
     <>
         <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
@@ -18,9 +16,9 @@ export default function Navigation() {
             <nav>
                 <ul>
                     <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/home'}>INICIO</Link></li>  
-                    <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/profile'}>{user && user.username ? user.username : user && user.email}</Link></li>  
+                    <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/profile'}>PERFIL</Link></li>  
                     <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/favoritos'}>FAVORITOS</Link></li>
-                    <li onClick={logoutUser}><a>LOGOUT</a></li>
+                    <li style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima'}} onClick={logoutUser}><a>LOGOUT</a></li>
                 </ul>  
             </nav>
         </header>

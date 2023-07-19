@@ -34,10 +34,9 @@ export default function Pokemon (props) {
                 display: flex;
                 justify-content:center;
                 font-family: 'Belanosima';
-                font-size: 25px;
+                font-size: 28px;
             }
             .gridStats {
-                padding-top: 30px;
                 justify-content: center;
                 align-items: center;
                 display: flex;
