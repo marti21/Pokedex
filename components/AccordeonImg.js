@@ -4,7 +4,7 @@ export default function AccordionImg() {
         <div className="container">
             <div className="box"><img src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/f/f8/latest/20200428203046/Gengar.png/800px-Gengar.png"></img></div>
             <div className="box"><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/150_f2.png"></img></div>
-            <div className="box"><img src="https://areajugones.sport.es/wp-content/uploads/2022/12/mega-salamence.png"></img></div>
+            <div className="box"><img src="https://sg.portal-pokemon.com/play/resources/pokedex/img/pm/600318f01f6fb95bbdaaebfd21644d1caefd43a7.png"></img></div>
             <div className="box"><img src="https://areajugones.sport.es/wp-content/uploads/2022/12/mega-rayquaza.png"></img></div>
             <div className="box"><img src="https://cdn.ligadegamers.com/imagenes/mega-evoluciones-de-pokemon-go-mega-charizard-x.jpg"></img></div>
         </div>
