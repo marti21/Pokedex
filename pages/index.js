@@ -101,7 +101,7 @@ export default function HomePage(){
 
                     </div>
                     <div className="containOtherButtons">
-                        <h2>Iniciar sesión con:</h2>
+                        <div className="loginWith"><span>Iniciar sesión con:</span></div>
                         <div className="otherLoginButtons">
                             <Button onClick={handleGoogleButton} width={40} height={40} src={'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png'}></Button>
                             <Button onClick={handleButtonGitHubLogin} width={40} height={40} src={'https://cdn-icons-png.flaticon.com/512/25/25231.png'}></Button>
@@ -203,6 +203,7 @@ export default function HomePage(){
                 justify-conent: center;
                 flex-direction: column;
                 margin-top: 50px;
+                gap: 10px;
             }
             .otherLoginButtons {
                 display: flex;
@@ -248,6 +249,10 @@ export default function HomePage(){
                 width: 100%;
                 height: 50px;
                 justify-content: flex-end;
+            }
+            .loginWith{
+                font-size: 18px;
+                font-weight: lighter;
             }
         `}
         </style>

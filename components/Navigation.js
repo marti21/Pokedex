@@ -13,14 +13,20 @@ export default function Navigation() {
     <>
         <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
         <header>
-            <nav>
-                <ul>
-                    <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/home'}>INICIO</Link></li>  
-                    <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/profile'}>PERFIL</Link></li>  
-                    <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/favoritos'}>FAVORITOS</Link></li>
-                    <li style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima'}} onClick={logoutUser}><a>LOGOUT</a></li>
-                </ul>  
-            </nav>
+            <div className="navContent">
+                <nav>
+                    <ul>
+                        <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/home'}>INICIO</Link></li>  
+                        <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/profile'}>PERFIL</Link></li>  
+                        <li><Link style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima' }} href={'/favoritos'}>FAVORITOS</Link></li>
+                        <li style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima'}} onClick={logoutUser}><a>LOGOUT</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div className="titleUser">
+                <span style={{ textDecoration: 'none', color: 'white', fontFamily: 'Belanosima'}}>{user ? (user.username ? user.username : user.email) : ''}</span>
+                {user?.avatar && <img className="userImgNav" src={user.avatar}></img>}
+            </div>
         </header>
     </>
     )

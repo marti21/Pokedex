@@ -8,16 +8,11 @@ header {
     display: flex;
     z-index: 2;
     color: white;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     height: 100px;
-    align-items: center;
-  } 
-nav {
-    width: 600px;
-    display: flex;
-    align-content: center;
-}
+} 
+
 ul {
     display: flex;
     flex-direction: row;
@@ -34,4 +29,20 @@ li{
 li:hover {
     background-color: red;
     border-radius: 5px;
+}
+.navContent{
+    width: 65%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.titleUser{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.userImgNav{
+    width: 50px;
 }

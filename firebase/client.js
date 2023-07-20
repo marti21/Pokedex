@@ -92,13 +92,14 @@ export const createUser = (email, password, setMessage) => {
   });
 }
 
-export const updateUser = () => {
+export const updateUser = (username) => {
   const user = firebase.auth().currentUser;
-  console.log(user)
+  console.log(username)
   
   // Actualiza el nombre del usuario
   user.updateProfile({
-    displayName: 'MAX',
+    displayName: username,
+    /*photoURL: ""*/
   })
     .then(() => {
       // Actualización exitosa
