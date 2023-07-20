@@ -98,7 +98,7 @@ export const updateUser = (username) => {
   // Actualiza el nombre del usuario
   user.updateProfile({
     displayName: username,
-    photoURL: "https://i0.wp.com/blog.indiegala.com/wp-content/uploads/2021/09/cover-4.jpg?fit=1200%2C900&ssl=1"
+    /*photoURL: "https://i0.wp.com/blog.indiegala.com/wp-content/uploads/2021/09/cover-4.jpg?fit=1200%2C900&ssl=1"*/
   })
     .then(() => {
       // Actualización exitosa

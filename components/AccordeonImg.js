@@ -21,10 +21,9 @@ export default function AccordionImg() {
                 flex: 1;
                 transition: 0.5s;
             }
-
             .box img {
                 transition: 0.5s;
-                width:100%;
+                width: 100%;
                 height: 420px;
                 object-fit: cover;
                 filter: grayscale(0.8);

@@ -257,7 +257,7 @@ export default function HomePage(){
                 font-weight: lighter;
             }
             .leftContent {
-                width: 650px;
+                width: 680px;
             }
         `}
         </style>
