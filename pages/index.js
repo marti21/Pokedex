@@ -4,6 +4,7 @@ import { createUser, loginWithEmailAndPassword, loginWithGitHub, loginWithGoogle
 import useUser from "@/hooks/useUser";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 const status = {
     UNDEFINED:undefined,
@@ -79,6 +80,7 @@ export default function HomePage(){
 
     return(
     <>
+        <Analytics />
         <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
         <div className="content">
             <div className="leftContent"><AccordionImg></AccordionImg></div>
