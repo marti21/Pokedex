@@ -84,7 +84,7 @@ export default function HomePage(){
             <div className="leftContent"><AccordionImg></AccordionImg></div>
             {user === null && statusLogin && <div className="rightContent">
                 <div className="cardLoginContent">
-                    <div className="titleLogin"><h1>INICIAR SESIÓN</h1></div>
+                    <div className="titleLogin"><h1>POKEDEX</h1></div>
                     <div className="messageError">{message && <span>{message}</span>}</div>
                     <div className="imputsContainer">
                     <form onSubmit={loginForm}>
@@ -97,7 +97,7 @@ export default function HomePage(){
                             <input onChange={handlePasswordForm} type="password" id="password"  name="password" placeholder="Contraseña" required></input>
                         </div>
                         
-                        <button className="submitButton" type="submit">Login</button>
+                        <button className="submitButton" type="submit">INICIAR SESIÓN</button>
                     </form>
 
                     </div>
@@ -116,7 +116,7 @@ export default function HomePage(){
 
             {user === null && statusRegister && <div className="rightContent">
                 <div className="cardLoginContent">
-                    <div className="titleLogin"><h1>REGISTRARSE</h1></div>
+                    <div className="titleLogin"><h1>POKEDEX</h1></div>
                     <div className="messageError">{message && <span>{message}</span>}</div>
                     <div className="imputsContainer">
                     <form onSubmit={registerForm}>
@@ -128,7 +128,7 @@ export default function HomePage(){
                             {password.length > 0 && <label htmlFor="password">Contraseña</label>}
                             <input onChange={handlePasswordForm} type="password" id="password"  name="password" placeholder="Contraseña" required></input>
                         </div>
-                        <button className="submitButton" type="submit">Registrarse</button>
+                        <button className="submitButton" type="submit">REGISTRARSE</button>
                     </form>
 
                     </div>
@@ -168,6 +168,7 @@ export default function HomePage(){
                 justify-content: center;
                 align-items:center;
                 padding-top: 50px;
+                background-color: yellow;
             }
             .imputsContainer {
                 display: flex;

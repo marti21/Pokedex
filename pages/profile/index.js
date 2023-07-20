@@ -19,13 +19,13 @@ export default function Profile() {
         <main>
             <div className="clear"></div>
             <div className="formUserContent">
-                <form onSubmit={submitUserUpdate}>
-                    {user && <img src={user.avatar}></img>}
-                    <h1>{user && user.email}</h1>
+                {user && <form onSubmit={submitUserUpdate}>
+                    {user.avatar && <img src={user.avatar}></img>}
+                    <h1>{user.email}</h1>
                 
                     <input id="username" name="username" type="text" defaultValue={user && user.username} required></input>
                     <button type="submit">SAVE</button>
-                </form>
+                </form>}
             </div>
         </main>
 

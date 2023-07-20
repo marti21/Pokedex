@@ -94,12 +94,11 @@ export const createUser = (email, password, setMessage) => {
 
 export const updateUser = (username) => {
   const user = firebase.auth().currentUser;
-  console.log(username)
   
   // Actualiza el nombre del usuario
   user.updateProfile({
     displayName: username,
-    /*photoURL: ""*/
+    photoURL: "https://i0.wp.com/blog.indiegala.com/wp-content/uploads/2021/09/cover-4.jpg?fit=1200%2C900&ssl=1"
   })
     .then(() => {
       // Actualización exitosa
