@@ -1,3 +1,4 @@
+import AccordionImg from "@/components/AccordeonImg";
 import Button from "@/components/Button";
 import { createUser, loginWithEmailAndPassword, loginWithGitHub, loginWithGoogle, recoverUserPassword } from "@/firebase/client";
 import useUser from "@/hooks/useUser";
@@ -80,7 +81,7 @@ export default function HomePage(){
     <>
         <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Belanosima"></link>
         <div className="content">
-            <div><h2>ferferf</h2></div>
+            <div className="leftContent"><AccordionImg></AccordionImg></div>
             {user === null && statusLogin && <div className="rightContent">
                 <div className="cardLoginContent">
                     <div className="titleLogin"><h1>INICIAR SESIÓN</h1></div>
@@ -147,7 +148,7 @@ export default function HomePage(){
                 font-family: 'Belanosima';
                 flex-direction: row;
                 flex-wrap: wrap;
-                justify-content: space-around;
+                gap: 11em;
             }
             .cardLoginContent {
                 border: 1px solid grey;
@@ -253,6 +254,9 @@ export default function HomePage(){
             .loginWith{
                 font-size: 18px;
                 font-weight: lighter;
+            }
+            .leftContent {
+                width: 650px;
             }
         `}
         </style>
